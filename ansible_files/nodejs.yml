@@ -1,0 +1,19 @@
+---
+- name: Install nodejs & yarn
+  hosts: localhost
+  gather_facts: yes
+
+  vars:
+    asdf_user: "{{ ansible_user_id }}"
+    asdf_group: "{{ ansible_user_id }}"
+    asdf_dir: "/home/{{ ansible_user_id }}/.asdf"
+    asdf_plugins:
+      - name: nodejs
+        repository: "https://github.com/asdf-vm/asdf-nodejs.git"
+        versions: ["16.3.0", "12.16.3"]
+        global: "latest"
+      - name: yarn
+        versions: [ "1.22.19" ]
+        global: "1.22.19"
+  roles:
+    - cimon-io.asdf

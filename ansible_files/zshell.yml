@@ -1,0 +1,16 @@
+---
+- name: Set up zshell 
+  hosts: localhost
+  gather_facts: yes
+
+  roles:
+    - role: gantsign.oh-my-zsh
+      users:
+        - username: "{{ ansible_env.USER }}"
+          oh_my_zsh:
+            theme: robbyrussell
+            plugins:
+              - git
+              - asdf
+              - ansible
+              - yarn
